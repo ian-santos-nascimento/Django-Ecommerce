@@ -1,0 +1,23 @@
+
+body {
+    background-color: rgb(36, 41, 46) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff !important;
+}
+
+p, span, small {
+    color: #eaeaea !important;
+}
+
+
+.box-element {
+    background-color: rgb(36, 41, 40) !important;
+    box-shadow: none !important;
+}
+
+.update-cart {
+    background-color: #808080;
+    color: #eaeaea;
+}

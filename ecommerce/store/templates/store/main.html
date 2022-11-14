@@ -8,10 +8,15 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <link id="stylemode" rel="stylesheet" type="text/css" href="{% static 'css/lightmode.css' %}">
+
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
+
 	<script type="text/javascript">
+
 		var user = '{{request.user}}'
+
 
 		function getToken(name) {
 		    var cookieValue = null;
@@ -74,8 +79,13 @@
 	      <li class="nav-item active">
 	        <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>
 	      </li>
-
 	    </ul>
+          <div class="form-inline my-2 my-lg-0">
+            <button class="btn btn-light" onclick="swapStyle('lightmode.css')">Light Mode</button>
+            <button class="btn btn-dark" onclick="swapStyle('darkmode.css')">Dark Mode</button>
+
+          </div>
+
 	    <div class="form-inline my-2 my-lg-0">
 	     	<a href="#"class="btn btn-warning">Login</a>
 
@@ -104,5 +114,22 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 	<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+
+    <script type="text/javascript">
+             var theme = localStorage.getItem('theme')
+
+        if(theme == null){
+            swapStyle('lightmode.css')
+        }else{
+            swapStyle(theme)
+        }
+
+        function swapStyle(sheet){
+            document.getElementById("stylemode").href ="/static/css/" + sheet
+            document.getElementById("stylemode").type = "text/css"
+            console.log(document.getElementById("stylemode").href)
+            localStorage.setItem("theme", sheet)
+        }
+    </script>
 </body>
 </html>
